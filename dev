@@ -1,0 +1,11 @@
+[loadbalancer]
+lb01
+[database]
+db01
+[webserver]
+app01
+app02
+[Control]
+control ansible_connection=local
+[centos]
+centos8

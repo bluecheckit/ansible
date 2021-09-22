@@ -1,0 +1,10 @@
+---
+- hosts: control
+  become: true
+  tasks:
+    - name: Sudo check
+      lineinfile:
+          path: '/etc/audit/rules.d/audit.rules'
+          line: '-w /etc/sudoers -p wa -k identity'
+          create: True
+

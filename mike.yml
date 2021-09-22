@@ -1,0 +1,12 @@
+---
+hosts: control
+become: true
+tasks:
+    - name: audit test
+      lineinfile:
+       create: true
+       path: '/etc/audit/rules.d/audit.rules'
+       line: "{{ item }}"
+      with_items:
+        - '-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k privileged-mount'
+        - '-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k privileged-mount'
